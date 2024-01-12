@@ -360,7 +360,10 @@
 "Assets/Kirurobo/UniWindowController/Samples/04_FileDialog/FileDialogSample.cs"
 "Assets/Kirurobo/UniWindowController/Samples/Common/AutoRotator.cs"
 "Assets/Kirurobo/UniWindowController/Samples/Common/ModelController.cs"
+"Assets/Scripts/testbrowser/OpenScene.cs"
+"Assets/Scripts/teststage/arrival.cs"
 "Assets/Scripts/teststage/Life.cs"
+"Assets/Scripts/teststage/notch.cs"
 -langversion:9.0
 
 /deterministic

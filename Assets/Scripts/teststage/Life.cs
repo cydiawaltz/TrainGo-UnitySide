@@ -8,15 +8,15 @@ using System.Threading;
 
 public class ReadLife : MonoBehaviour
 {
-    //‹¤—Lƒƒ‚ƒŠ‚Ì“Ç‚İ‚İ
+    //ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
     MemoryMappedFile lifefrombve;
     MemoryMappedViewAccessor life;
     public int lifetime;
-    public TextMeshProUGUI =textMeshPro;
+    public TextMeshProUGUI textMeshPro;
     // Start is called before the first frame update
     void Start()
     {
-        //BVE‘¤‚©‚ç
+        //BVEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         MemoryMappedFile lifefrombve = MemoryMappedFile.OpenExisting("Life");
         life = lifefrombve.CreateViewAccessor();
         lifetime = life.ReadInt32(0);
@@ -25,6 +25,6 @@ public class ReadLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textMeshPro.text= lifetime.ToString();//‚¿ŠÔ‚Ì’l‚ğƒeƒLƒXƒg‚É‘ã“ü
+        textMeshPro.text= lifetime.ToString();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚Ì’lï¿½ï¿½ï¿½eï¿½Lï¿½Xï¿½gï¿½É‘ï¿½ï¿½
     }
 }
