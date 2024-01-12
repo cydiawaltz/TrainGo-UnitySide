@@ -43,11 +43,15 @@ public class ReadArrival : MonoBehaviour
     {
         if(pass=1)//停車
         {
-            textMeshPro.text= arrival.ToString();//到着時刻の値をテキストに代入
+            textMeshPro.text= arrivaltime.ToString();//到着時刻の値をテキストに代入
         }
         if(pass=0)//通過
         {
-            textMeshPro.text= arrival.ToString();
+            textMeshPro.text= past.ToString();//通貨時刻の値をテキストに代入
+        }
+        else
+        {
+            textMeshPro.text= "You can (not) advanced.";//You can (not) redo.
         }
     }
 }
