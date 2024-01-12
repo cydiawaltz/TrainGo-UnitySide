@@ -8,7 +8,7 @@ using System.Threading;
 
 public class ReadLife : MonoBehaviour
 {
-    //共有メモリの読み込み
+    //蜈ｱ譛峨Γ繝｢繝ｪ縺ｮ隱ｭ縺ｿ霎ｼ縺ｿ
     MemoryMappedFile lifefrombve;
     MemoryMappedViewAccessor life;
     public int lifetime;
@@ -16,7 +16,7 @@ public class ReadLife : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //BVE側から
+        //BVE蛛ｴ縺九ｉ
         MemoryMappedFile lifefrombve = MemoryMappedFile.OpenExisting("Life");
         life = lifefrombve.CreateViewAccessor();
         lifetime = life.ReadInt32(0);
@@ -25,6 +25,6 @@ public class ReadLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textMeshPro.text= lifetime.ToString();//持ち時間の値をテキストに代入
+        textMeshPro.text= lifetime.ToString();//謖√■譎る俣縺ｮ蛟､繧偵ユ繧ｭ繧ｹ繝医↓莉｣蜈･
     }
 }
