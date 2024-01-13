@@ -15,41 +15,45 @@ public class ReadArrival : MonoBehaviour
     MemoryMappedViewAccessor passhantei;
     MemoryMappedViewAccessor pass;
     int arrivaltime;
+    TimeSpan Arritime;
     int past;
-    int passtype1;
+    TimeSpan pastti;
+    int passtype;
     public TextMeshProUGUI  textMeshPro;
     // Start is called before the first frame update
     void Start()
     {
         //BVE側から
         //停車
-        arrivalfrombve = MemoryMappedFile.OpenExisting("Arrival");
+        arrivalfrombve = MemoryMappedFile.OpenExisting("arrival");
         arrival = arrivalfrombve.CreateViewAccessor();
         arrivaltime = arrival.ReadInt32(0);
+        Arritime = TimeSpan.FromMilliseconds(arrivaltime);
         //通過
-        MemoryMappedFile pastfrombve = MemoryMappedFile.OpenExisting("Past");
+        MemoryMappedFile pastfrombve = MemoryMappedFile.OpenExisting("past");
         pasttime = pastfrombve.CreateViewAccessor();
         past = pasttime.ReadInt32(0);
+        pastti = TimeSpan.FromMilliseconds(past);
         //通貨停車判定
-        MemoryMappedFile passfrombve = MemoryMappedFile.OpenExisting("Pass");
+        MemoryMappedFile passfrombve = MemoryMappedFile.OpenExisting("Passornot");
         pass = passfrombve.CreateViewAccessor();
-        passtype1 =pass.ReadInt32(0);
+        passtype =pass.ReadInt32(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(passtype1==1)//停車
+        if(passtype==0)//停車
         {
-            textMeshPro.text= arrivaltime.ToString();//到着時刻の値をテキストに代入
+            textMeshPro.text = Arritime.ToString();
         }
-        if(passtype1==0)//通過
+        if(passtype==1)//通過
         {
-            textMeshPro.text= past.ToString();//通貨時刻の値をテキストに代入
+            textMeshPro.text= pastti.ToString();//通貨時刻の値をテキストに代入
         }
         else
         {
-            textMeshPro.text= "You can (not) advanced.";//You can (not) redo.
+            textMeshPro.text= "You can (not) redo.";//You can (not) advanced.
         }
     }
 }
