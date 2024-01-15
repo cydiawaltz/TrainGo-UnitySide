@@ -67,6 +67,7 @@
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\04_FileDialog\FileDialogSample.cs" />
     <Compile Include="Assets\Scripts\teststage\notch.cs" />
     <Compile Include="Assets\Scripts\testbrowser\OpenScene.cs" />
+    <Compile Include="Assets\Scripts\teststage\arritime.cs" />
     <Compile Include="Assets\Scripts\teststage\arrival.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\00_Menu\SampleManager.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\03_Fullscreen\FullscreenSample.cs" />
