@@ -8,18 +8,22 @@ public class ReadArrival : MonoBehaviour
     //共有メモリの読み込み
     //停車
     MemoryMappedViewAccessor arrival;
-    MemoryMappedFile arrivalfrombve;
     //通過
     MemoryMappedViewAccessor pasttime;
     //判定
     MemoryMappedViewAccessor passhantei;
     MemoryMappedViewAccessor pass;
+    MemoryMappedViewAccessor nownow;
+    int now;
+    TimeSpan nowtime;
     int arrivaltime;
     TimeSpan Arritime;
     int past;
     TimeSpan pastti;
     int passtype;
     public TextMeshProUGUI  textMeshPro;
+    public TextMeshProUGUI text;
+    public bool passhantei;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +42,11 @@ public class ReadArrival : MonoBehaviour
         MemoryMappedFile passfrombve = MemoryMappedFile.OpenExisting("Passornot");
         pass = passfrombve.CreateViewAccessor();
         passtype =pass.ReadInt32(0);
+        //現在
+        MemoryMappedFile a = MemoryMappedFile.OpenExisting("now");
+        nownow = a.CreateViewAccessor();
+        now =nownow.ReadInt32(0);
+        nowtime = TimeSpan.FromMilliseconds(now);
     }
 
     // Update is called once per frame
@@ -46,14 +55,17 @@ public class ReadArrival : MonoBehaviour
         if(passtype==0)//停車
         {
             textMeshPro.text = Arritime.ToString();
+            passhantei = true;
         }
         if(passtype==1)//通過
         {
             textMeshPro.text= pastti.ToString();//通貨時刻の値をテキストに代入
+            passhantei = false;
         }
         else
         {
             textMeshPro.text= "You can (not) redo.";//You can (not) advanced.
         }
+        text.text = now.ToString();
     }
 }
