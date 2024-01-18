@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO.MemoryMappedFiles;
+using System.IO.Threading;
 
 public class Syokyu : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class Syokyu : MonoBehaviour
     int saikasoku = 5;//駅構内再加速
     int HijouSeidouTeisya = 5;//非常制動停車
     int hijouseidou = 3;//非常制動
+    int kakusikeiteki = 2;//各死刑的
     MemoryMappedViewAccessor beacon;
     MemoryMappedViewAccessor speedfrombve;
     MemoryMappedViewAccessor NowLoca;
     MemoryMappedViewAccessor next;
+    MemoryMappedViewAccessor horn;
     public int arrivaltime;
     public int beacontype;
     public int atc;
@@ -29,6 +32,8 @@ public class Syokyu : MonoBehaviour
     int now;
     public double nowlocation;
     public double NextLocation;
+    public bool HideHorn;
+    public int Onhorn;
     //他スクリプト
     public Notch notch;
     public Arrival arriv; 
@@ -60,8 +65,11 @@ public class Syokyu : MonoBehaviour
         NextLocation = next.ReadSingle(0);
         //現在
         now = arriv.now;
-        //
-        wait = false;
+        //各死刑的
+        HideHorn = false;
+        MemoryMappedFile c = MemoryMappedFile.OpenExisting("arrival");
+        horn = c.CreateViewAccessor();
+        Onhorn = horn.ReadInt32(0);
         atc=80;
     }
 
@@ -97,28 +105,66 @@ public class Syokyu : MonoBehaviour
                 case 26://そうでないときはクソめんどいのでATC80
                     atc = 80;
                     break;
+                case 900://隠し警笛開始
+                    HideHorn = true;
+                    break;
+                case 901://隠し警笛終了
+                    HideHorn = false;
+                    break;
             }
         //減点処理・加点処理
+        //前方予告無視
         if(atc<speed && Brake == 0)
         {
-            life -=overatc;//予告無
+            life -=overatc;
         }
         //遅れ・定通
         if(arriv.passhantei = true)//停車時
         {
-            //遅れが５秒超え、１秒おき、合格範囲外
-            if(arrival - now >5000 && (arrival - now)% 1000 == 0 && Math.Abs(nowlocation - NextLocation)>GoukakuHani)
+            //遅れが５秒超え、１秒おき
+            if(arrival - now >5000 && (arrival - now)% 1000 == 0)
             {
-                life -=overtime;//５秒以上遅れたら１秒ごとに減点
+                //範囲外
+                if(Math.Abs(nowlocation - NextLocation)>GoukakuHani )
+                {
+                    life -= overtime;//５秒以上遅れたら１秒ごとに減点
+                }
+                //範囲内かつ停車していない
+                if(Math.Abs(nowlocation - NextLocation)<GoukakuHani && speed>0)
+                {
+                    life-= overtime;
+                }
             }
+            //Grate!
             if(Math.Abs(milliarrival - millinow) < 1000 && Math.Abs(nowlocation - NextLocation)<0.5)
             {
                 life += grate;//Grate!
             }
+            //Good!
             if(Math.Abs(nowlocation - NextLocation)<0.5)
             {
                 life -= good;
             }
+            //オーバーラン
+            if (NowLocation > GoukakuHani + NextLocation)//過走時
+            {
+                if (speed == 0)
+                {
+                    int overrun = Convert.ToInt32(NowLocation - NextLocation);
+                    life -= overrun;
+                }
+            }
+            //隠し警笛
+            if(HideHorn = true)//隠し警笛ゾーン
+            {
+                if(Onhorn == 1)
+                {
+                    life += kakusikeiteki;
+                    Thread.Sleep(1000);
+                }
+            }
+
         }
 
     }
+}
