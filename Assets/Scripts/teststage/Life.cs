@@ -45,7 +45,7 @@ public class Syokyu : MonoBehaviour
         //past
         past = arriv.past;
         //Beacon
-        MemoryMappedFile beaconfrombve = MemoryMappedFile.OpenExisting("arrival");
+        MemoryMappedFile beaconfrombve = MemoryMappedFile.OpenExisting("Horn");
         beacon = beaconfrombve.CreateViewAccessor();
         beacontype = beacon.ReadInt32(0);
         //Speed
@@ -56,11 +56,11 @@ public class Syokyu : MonoBehaviour
         Power = notch.Power;
         Brake = notch.Brake;
         //距離
-        MemoryMappedFile a = MemoryMappedFile.OpenExisting("speed")
+        MemoryMappedFile a = MemoryMappedFile.OpenExisting("NowLocation")
         NowLoca = a.CreateViewAccessor();
         nowlocation = NowLoca.ReadSingle(0);
         //次駅
-        MemoryMappedFile b = MemoryMappedFile.OpenExisting("speed")
+        MemoryMappedFile b = MemoryMappedFile.OpenExisting("NextLocation")
         next = b.CreateViewAccessor();
         NextLocation = next.ReadSingle(0);
         //現在
@@ -154,16 +154,24 @@ public class Syokyu : MonoBehaviour
                     life -= overrun;
                 }
             }
-            //隠し警笛
-            if(HideHorn = true)//隠し警笛ゾーン
-            {
-                if(Onhorn == 1)
-                {
-                    life += kakusikeiteki;
-                    Thread.Sleep(1000);
-                }
-            }
 
+        }
+        if(arriv.passhantei = false)//通過
+        {
+            if(arrival - now >5000 && (arrival - now)% 1000 == 0 && NextLocation > nowlocation)//５秒過ぎたあと、１秒毎、次駅距離>現在距離
+            {
+                life -= overtime;
+            }
+        }
+        if()//ノッチが非常の時
+        //隠し警笛
+        if(HideHorn = true)//隠し警笛ゾーン
+        {
+            if(Onhorn == 1)
+            {
+                life += kakusikeiteki;
+                Thread.Sleep(1000);
+            }
         }
 
     }
