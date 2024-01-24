@@ -36,7 +36,9 @@ public class Syokyu : MonoBehaviour
     public int Onhorn;
     //他スクリプト
     public Notch notch;
-    public Arrival arriv; 
+    public Arrival arriv;
+    //ここから音声・画像など
+    public GameObject yokokumusi;//予告無視時にオンに、「予告無視」ボイスと画像を入れる 
     // Start is called before the first frame update
     void Start()
     {
@@ -102,7 +104,7 @@ public class Syokyu : MonoBehaviour
                 case 25:
                     atc = 75;
                     break;
-                case 26://そうでないときはクソめんどいのでATC80
+                case 26:
                     atc = 80;
                     break;
                 case 900://隠し警笛開始
@@ -117,22 +119,25 @@ public class Syokyu : MonoBehaviour
         if(atc<speed && Brake == 0)
         {
             life -=overatc;
+            Thread.Sleep(5000);
         }
         //遅れ・定通
         if(arriv.passhantei = true)//停車時
         {
             //遅れが５秒超え、１秒おき
-            if(arrival - now >5000 && (arrival - now)% 1000 == 0)
+            if(arrival - now >5000 )
             {
                 //範囲外
                 if(Math.Abs(nowlocation - NextLocation)>GoukakuHani )
                 {
                     life -= overtime;//５秒以上遅れたら１秒ごとに減点
+                    Thread.Sleep(1000);
                 }
                 //範囲内かつ停車していない
                 if(Math.Abs(nowlocation - NextLocation)<GoukakuHani && speed>0)
                 {
                     life-= overtime;
+                    Thread.Sleep(1000);
                 }
             }
             //Grate!
@@ -143,7 +148,7 @@ public class Syokyu : MonoBehaviour
             //Good!
             if(Math.Abs(nowlocation - NextLocation)<0.5)
             {
-                life -= good;
+                life += good;//good!
             }
             //オーバーラン
             if (NowLocation > GoukakuHani + NextLocation)//過走時
@@ -152,18 +157,28 @@ public class Syokyu : MonoBehaviour
                 {
                     int overrun = Convert.ToInt32(NowLocation - NextLocation);
                     life -= overrun;
+                    Thread.Sleep(500000);
                 }
             }
 
         }
         if(arriv.passhantei = false)//通過
         {
-            if(arrival - now >5000 && (arrival - now)% 1000 == 0 && NextLocation > nowlocation)//５秒過ぎたあと、１秒毎、次駅距離>現在距離
+            if(arrival - now >5000 && NextLocation > nowlocation)//５秒過ぎたあと,次駅距離>現在距離
             {
                 life -= overtime;
+                Thread.Sleep(1000);
+            }
+            if(Math.Abs(arrival - now)<1000 &&NextLocation == nowlocation)
+            {
+                life += teitsuu;//定通
             }
         }
-        if()//ノッチが非常の時
+        if(Brake == 8)//ノッチが非常の時
+        {
+            life -= hijouseidou;
+            Thread.Sleep(4000);
+        }
         //隠し警笛
         if(HideHorn = true)//隠し警笛ゾーン
         {
