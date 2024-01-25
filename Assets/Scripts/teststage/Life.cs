@@ -39,6 +39,7 @@ public class Syokyu : MonoBehaviour
     public Arrival arriv;
     //ここから音声・画像など
     public GameObject yokokumusi;//予告無視時にオンに、「予告無視」ボイスと画像を入れる 
+    public GameObject Grate;//Grate!時に表示
     // Start is called before the first frame update
     void Start()
     {
@@ -119,7 +120,9 @@ public class Syokyu : MonoBehaviour
         if(atc<speed && Brake == 0)
         {
             life -=overatc;
-            Thread.Sleep(5000);
+            yokokumusi.SetActive(true);
+            Thread.Sleep(2000);
+            yokokumusi.SetActive(false);
         }
         //遅れ・定通
         if(arriv.passhantei = true)//停車時
@@ -143,6 +146,7 @@ public class Syokyu : MonoBehaviour
             //Grate!
             if(Math.Abs(milliarrival - millinow) < 1000 && Math.Abs(nowlocation - NextLocation)<0.5)
             {
+                
                 life += grate;//Grate!
             }
             //Good!
