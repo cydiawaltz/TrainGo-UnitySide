@@ -6,8 +6,8 @@ public class ReadNotch : MonoBehaviour
 {
     MemoryMappedViewAccessor powernotch;
     MemoryMappedViewAccessor brakenotch;
-    int Power;//力行ノッチ
-    int Brake;//ブレーキノッチ
+    public int Power;//力行ノッチ
+    public int Brake;//ブレーキノッチ
     public TextMeshProUGUI textMeshpro;
     public TextMeshProUGUI textmeshpro;
     // Start is called before the first frame update

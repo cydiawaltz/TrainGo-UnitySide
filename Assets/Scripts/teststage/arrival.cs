@@ -11,14 +11,14 @@ public class ReadArrival : MonoBehaviour
     //通過
     MemoryMappedViewAccessor pasttime;
     //判定
-    MemoryMappedViewAccessor passhantei;
+
     MemoryMappedViewAccessor pass;
     MemoryMappedViewAccessor nownow;
-    int now;
+    public int now;
     TimeSpan nowtime;
-    int arrivaltime;
+    public int arrivaltime;
     TimeSpan Arritime;
-    int past;
+    public int past;
     TimeSpan pastti;
     int passtype;
     public TextMeshProUGUI  textMeshPro;
@@ -29,7 +29,7 @@ public class ReadArrival : MonoBehaviour
     {
         //BVE側から
         //停車
-        arrivalfrombve = MemoryMappedFile.OpenExisting("arrival");
+        MemoryMappedFile arrivalfrombve = MemoryMappedFile.OpenExisting("arrival");
         arrival = arrivalfrombve.CreateViewAccessor();
         arrivaltime = arrival.ReadInt32(0);
         Arritime = TimeSpan.FromMilliseconds(arrivaltime);

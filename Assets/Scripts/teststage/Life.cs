@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.IO.MemoryMappedFiles;
-using System.IO.Threading;
+using System.Threading;
+using System;
+using System.Collections;
+using TMPro;
+
 
 public class Syokyu : MonoBehaviour
 {
@@ -35,10 +39,11 @@ public class Syokyu : MonoBehaviour
     public bool HideHorn;
     public int Onhorn;
     //他スクリプト
-    public Notch notch;
-    public Arrival arriv;
+    public ReadNotch notch;
+    public ReadArrival arriv;
     //ここから音声・画像など
     public GameObject yokokumusi;//予告無視時にオンに、「予告無視」ボイスと画像を入れる 
+    public TextMeshProUGUI textMeshProUGUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,18 +56,18 @@ public class Syokyu : MonoBehaviour
         beacon = beaconfrombve.CreateViewAccessor();
         beacontype = beacon.ReadInt32(0);
         //Speed
-        MemoryMappedFile speedfrombv = MemoryMappedFile.OpenExisting("speed")
+        MemoryMappedFile speedfrombv = MemoryMappedFile.OpenExisting("speed");
         speedfrombve = speedfrombv.CreateViewAccessor();
         speed = speedfrombve.ReadSingle(0);
         //ノッチ
         Power = notch.Power;
         Brake = notch.Brake;
         //距離
-        MemoryMappedFile a = MemoryMappedFile.OpenExisting("NowLocation")
+        MemoryMappedFile a = MemoryMappedFile.OpenExisting("NowLocation");
         NowLoca = a.CreateViewAccessor();
         nowlocation = NowLoca.ReadSingle(0);
         //次駅
-        MemoryMappedFile b = MemoryMappedFile.OpenExisting("NextLocation")
+        MemoryMappedFile b = MemoryMappedFile.OpenExisting("NextLocation");
         next = b.CreateViewAccessor();
         NextLocation = next.ReadSingle(0);
         //現在
@@ -114,6 +119,7 @@ public class Syokyu : MonoBehaviour
                     HideHorn = false;
                     break;
             }
+        textMeshProUGUI.text = life.ToString();
         //減点処理・加点処理
         //前方予告無視
         if(atc<speed && Brake == 0)
@@ -122,7 +128,7 @@ public class Syokyu : MonoBehaviour
             Thread.Sleep(5000);
         }
         //遅れ・定通
-        if(arriv.passhantei = true)//停車時
+        if(arriv.passhantei == true)//停車時
         {
             //遅れが５秒超え、１秒おき
             if(arrival - now >5000 )
@@ -141,28 +147,30 @@ public class Syokyu : MonoBehaviour
                 }
             }
             //Grate!
-            if(Math.Abs(milliarrival - millinow) < 1000 && Math.Abs(nowlocation - NextLocation)<0.5)
+            if(Math.Abs(arrival - now) < 1000 && Math.Abs(nowlocation - NextLocation)<0.5)
             {
                 life += grate;//Grate!
+                Thread.Sleep(50000);
             }
             //Good!
             if(Math.Abs(nowlocation - NextLocation)<0.5)
             {
                 life += good;//good!
+                Thread.Sleep(50000);
             }
             //オーバーラン
-            if (NowLocation > GoukakuHani + NextLocation)//過走時
+            if (nowlocation > GoukakuHani + NextLocation)//過走時
             {
                 if (speed == 0)
                 {
-                    int overrun = Convert.ToInt32(NowLocation - NextLocation);
+                    int overrun = Convert.ToInt32(nowlocation - NextLocation);
                     life -= overrun;
                     Thread.Sleep(500000);
                 }
             }
 
         }
-        if(arriv.passhantei = false)//通過
+        if(arriv.passhantei == false)//通過
         {
             if(arrival - now >5000 && NextLocation > nowlocation)//５秒過ぎたあと,次駅距離>現在距離
             {
@@ -172,6 +180,7 @@ public class Syokyu : MonoBehaviour
             if(Math.Abs(arrival - now)<1000 &&NextLocation == nowlocation)
             {
                 life += teitsuu;//定通
+                Thread.Sleep(1000);
             }
         }
         if(Brake == 8)//ノッチが非常の時
@@ -180,7 +189,7 @@ public class Syokyu : MonoBehaviour
             Thread.Sleep(4000);
         }
         //隠し警笛
-        if(HideHorn = true)//隠し警笛ゾーン
+        if(HideHorn == true)//隠し警笛ゾーン
         {
             if(Onhorn == 1)
             {
@@ -188,6 +197,5 @@ public class Syokyu : MonoBehaviour
                 Thread.Sleep(1000);
             }
         }
-
     }
 }

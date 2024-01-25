@@ -73,6 +73,7 @@
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\03_Fullscreen\FullscreenSample.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\Common\AutoRotator.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\Common\ModelController.cs" />
+    <Compile Include="Assets\Scripts\lifeaccessor.cs" />
     <Compile Include="Assets\Scripts\teststage\Life.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\02_UiSample\UiSampleController.cs" />
   </ItemGroup>

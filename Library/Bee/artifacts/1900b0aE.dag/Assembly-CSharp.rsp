@@ -360,6 +360,7 @@
 "Assets/Kirurobo/UniWindowController/Samples/04_FileDialog/FileDialogSample.cs"
 "Assets/Kirurobo/UniWindowController/Samples/Common/AutoRotator.cs"
 "Assets/Kirurobo/UniWindowController/Samples/Common/ModelController.cs"
+"Assets/Scripts/lifeaccessor.cs"
 "Assets/Scripts/testbrowser/OpenScene.cs"
 "Assets/Scripts/teststage/arritime.cs"
 "Assets/Scripts/teststage/arrival.cs"
