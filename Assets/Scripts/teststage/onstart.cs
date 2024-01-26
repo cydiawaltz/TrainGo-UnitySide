@@ -9,3 +9,4 @@ public class onstart : MonoBehaviour
         AppWindowUtility.FullScreen = true;//フルスクリーンにする
     }
 }
+//このスクリプトはTestStageシーンの開始時に実行するように
