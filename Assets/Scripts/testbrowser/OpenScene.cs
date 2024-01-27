@@ -4,17 +4,23 @@ using UnityEngine.SceneManagement;
 
 public class OpenScene : MonoBehaviour
 {
+    //public Button button;
     // Start is called before the first frame update
     void Start()
     {
+        //Button btn = button.GetComponent<Button>();
+        //btn.onClick.AddListener(OnButtonClick);
     }
 
     // Update is called once per frame
-    public void LoadScene(string TestStage)
+   void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            SceneManager.LoadScene(TestStage);
-        }
+
+    }
+    public void OnButtonClick()
+    {
+        SceneManager.LoadScene(TestStage);
+        //このスクリプトは必ずTestBrowserの方に
+        //https://umistudioblog.com/scenetransitionbutton/ 
     }
 }
