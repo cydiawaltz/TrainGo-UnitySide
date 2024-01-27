@@ -327,6 +327,7 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
 -r:"Library/PackageCache/com.unity.testtools.codecoverage@1.2.4/lib/ReportGenerator/ReportGeneratorMerged.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/SatorImaging.AppWindowUtility.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
@@ -361,11 +362,13 @@
 "Assets/Kirurobo/UniWindowController/Samples/Common/AutoRotator.cs"
 "Assets/Kirurobo/UniWindowController/Samples/Common/ModelController.cs"
 "Assets/Scripts/lifeaccessor.cs"
+"Assets/Scripts/testbrowser/ChangeDisplay.cs"
 "Assets/Scripts/testbrowser/OpenScene.cs"
 "Assets/Scripts/teststage/arritime.cs"
 "Assets/Scripts/teststage/arrival.cs"
 "Assets/Scripts/teststage/Life.cs"
 "Assets/Scripts/teststage/notch.cs"
+"Assets/Scripts/teststage/onstart.cs"
 -langversion:9.0
 
 /deterministic

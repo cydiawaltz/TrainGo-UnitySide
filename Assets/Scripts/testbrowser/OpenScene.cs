@@ -19,7 +19,7 @@ public class OpenScene : MonoBehaviour
     }
     public void OnButtonClick()
     {
-        SceneManager.LoadScene(TestStage);
+        SceneManager.LoadScene("TestStage");
         //このスクリプトは必ずTestBrowserの方に
         //https://umistudioblog.com/scenetransitionbutton/ 
     }

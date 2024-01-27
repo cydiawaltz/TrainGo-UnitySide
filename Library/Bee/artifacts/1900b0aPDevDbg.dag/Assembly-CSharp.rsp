@@ -304,6 +304,7 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.WindModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.XRModule.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Library/Bee/artifacts/1900b0aPDevDbg.dag/SatorImaging.AppWindowUtility.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aPDevDbg.dag/Unity.TextMeshPro.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aPDevDbg.dag/Unity.Timeline.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aPDevDbg.dag/Unity.UniWindowController.ref.dll"
@@ -320,11 +321,13 @@
 "Assets/Kirurobo/UniWindowController/Samples/Common/AutoRotator.cs"
 "Assets/Kirurobo/UniWindowController/Samples/Common/ModelController.cs"
 "Assets/Scripts/lifeaccessor.cs"
+"Assets/Scripts/testbrowser/ChangeDisplay.cs"
 "Assets/Scripts/testbrowser/OpenScene.cs"
 "Assets/Scripts/teststage/arritime.cs"
 "Assets/Scripts/teststage/arrival.cs"
 "Assets/Scripts/teststage/Life.cs"
 "Assets/Scripts/teststage/notch.cs"
+"Assets/Scripts/teststage/onstart.cs"
 -langversion:9.0
 
 /deterministic

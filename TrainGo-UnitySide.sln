@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.UniWindowController",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{0C331A05-B53F-348D-462F-63D56CE3BE6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatorImaging.AppWindowUtility", "SatorImaging.AppWindowUtility.csproj", "{ED9CD7FE-5283-CB28-4365-0575E2556CD5}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.UniWindowController.Editor", "Unity.UniWindowController.Editor.csproj", "{5E320398-C31A-4B00-9495-EE62D1730929}"
 EndProject
 Global
@@ -21,6 +23,10 @@ Global
 		{0C331A05-B53F-348D-462F-63D56CE3BE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C331A05-B53F-348D-462F-63D56CE3BE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C331A05-B53F-348D-462F-63D56CE3BE6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9CD7FE-5283-CB28-4365-0575E2556CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9CD7FE-5283-CB28-4365-0575E2556CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9CD7FE-5283-CB28-4365-0575E2556CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9CD7FE-5283-CB28-4365-0575E2556CD5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E320398-C31A-4B00-9495-EE62D1730929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E320398-C31A-4B00-9495-EE62D1730929}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E320398-C31A-4B00-9495-EE62D1730929}.Release|Any CPU.ActiveCfg = Release|Any CPU
