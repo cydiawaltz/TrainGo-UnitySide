@@ -31,7 +31,7 @@ public class ReadArrival : MonoBehaviour
         //停車
         MemoryMappedFile arrivalfrombve = MemoryMappedFile.OpenExisting("arrival");
         arrival = arrivalfrombve.CreateViewAccessor();
-        arrivaltime = arrival.ReadInt32(0);
+        arrivaltime = arrival.ReadInt32(1);
         Arritime = TimeSpan.FromMilliseconds(arrivaltime);
         //通過
         MemoryMappedFile pastfrombve = MemoryMappedFile.OpenExisting("past");

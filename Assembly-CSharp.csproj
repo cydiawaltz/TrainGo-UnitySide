@@ -72,12 +72,14 @@
     <Compile Include="Assets\Scripts\teststage\arrival.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\00_Menu\SampleManager.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\03_Fullscreen\FullscreenSample.cs" />
+    <Compile Include="Assets\Scenes\curse\NewBehaviourScript.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\Common\AutoRotator.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\Common\ModelController.cs" />
     <Compile Include="Assets\Scripts\lifeaccessor.cs" />
     <Compile Include="Assets\Scripts\teststage\Life.cs" />
     <Compile Include="Assets\Kirurobo\UniWindowController\Samples\02_UiSample\UiSampleController.cs" />
     <Compile Include="Assets\Scripts\teststage\onstart.cs" />
+    <Compile Include="Assets\Scripts\testbrowser\OpenScene2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

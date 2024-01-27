@@ -342,7 +342,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 636105463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 636105465}
+        m_TargetAssemblyTypeName: OpenScene2, Assembly-CSharp
+        m_MethodName: SwitchScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TestStage
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &636105463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +402,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 636105460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5277b89fc55800b438e2872c604d8cc3, type: 3}
+  m_Script: {fileID: 11500000, guid: dc7e6f77f80caaa46bea8ef1c5d8891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &705507993
