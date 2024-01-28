@@ -9,7 +9,7 @@ using TMPro;
 public class Syokyu : MonoBehaviour
 {
     //持ち時間の設定
-    public int life = 30;//
+    public int life;//
     int overatc = 2;//atc超過（予告無視）
     int overtime = 1;//時間超過(１秒毎)
     int teitsuu = 3;//定通ボーナス
@@ -25,6 +25,7 @@ public class Syokyu : MonoBehaviour
     MemoryMappedViewAccessor NowLoca;
     MemoryMappedViewAccessor next;
     MemoryMappedViewAccessor horn;
+    MemoryMappedViewAccessor lifetobve;
     public int arrivaltime;
     public int beacontype;
     public int atc;
@@ -55,30 +56,34 @@ public class Syokyu : MonoBehaviour
         //Beacon
         MemoryMappedFile beaconfrombve = MemoryMappedFile.OpenExisting("Horn");
         beacon = beaconfrombve.CreateViewAccessor();
-        beacontype = beacon.ReadInt32(0);
+        beacontype = beacon.ReadInt32(1);
         //Speed
         MemoryMappedFile speedfrombv = MemoryMappedFile.OpenExisting("speed");
         speedfrombve = speedfrombv.CreateViewAccessor();
-        speed = speedfrombve.ReadSingle(0);
+        speed = speedfrombve.ReadSingle(1);
         //ノッチ
         Power = notch.Power;
         Brake = notch.Brake;
         //距離
         MemoryMappedFile a = MemoryMappedFile.OpenExisting("NowLocation");
         NowLoca = a.CreateViewAccessor();
-        nowlocation = NowLoca.ReadSingle(0);
+        nowlocation = NowLoca.ReadSingle(1);
         //次駅
         MemoryMappedFile b = MemoryMappedFile.OpenExisting("NextLocation");
         next = b.CreateViewAccessor();
-        NextLocation = next.ReadSingle(0);
+        NextLocation = next.ReadSingle(1);
+        //
+        MemoryMappedFile d = MemoryMappedFile.OpenExisting("life");
+        lifetobve = d.CreateViewAccessor();
         //現在
         now = arriv.now;
         //各死刑的
         HideHorn = false;
         MemoryMappedFile c = MemoryMappedFile.OpenExisting("arrival");
         horn = c.CreateViewAccessor();
-        Onhorn = horn.ReadInt32(0);
+        Onhorn = horn.ReadInt32(1);
         atc=80;
+        life =30;
     }
 
     // Update is called once per frame
@@ -120,6 +125,7 @@ public class Syokyu : MonoBehaviour
                     HideHorn = false;
                     break;
             }
+        lifetobve.Write(1,life);
         textMeshProUGUI.text = life.ToString();
         //減点処理・加点処理
         //前方予告無視

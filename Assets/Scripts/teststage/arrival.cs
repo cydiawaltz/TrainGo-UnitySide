@@ -11,7 +11,6 @@ public class ReadArrival : MonoBehaviour
     //通過
     MemoryMappedViewAccessor pasttime;
     //判定
-
     MemoryMappedViewAccessor pass;
     MemoryMappedViewAccessor nownow;
     public int now;
@@ -36,16 +35,16 @@ public class ReadArrival : MonoBehaviour
         //通過
         MemoryMappedFile pastfrombve = MemoryMappedFile.OpenExisting("past");
         pasttime = pastfrombve.CreateViewAccessor();
-        past = pasttime.ReadInt32(0);
+        past = pasttime.ReadInt32(1);
         pastti = TimeSpan.FromMilliseconds(past);
         //通貨停車判定
         MemoryMappedFile passfrombve = MemoryMappedFile.OpenExisting("Passornot");
         pass = passfrombve.CreateViewAccessor();
-        passtype =pass.ReadInt32(0);
+        passtype =pass.ReadInt32(1);
         //現在
         MemoryMappedFile a = MemoryMappedFile.OpenExisting("now");
         nownow = a.CreateViewAccessor();
-        now =nownow.ReadInt32(0);
+        now =nownow.ReadInt32(1);
         nowtime = TimeSpan.FromMilliseconds(now);
     }
 
@@ -62,9 +61,9 @@ public class ReadArrival : MonoBehaviour
             textMeshPro.text= pastti.ToString();//通貨時刻の値をテキストに代入
             passhantei = false;
         }
-        else
+        if(passtype>=2)
         {
-            textMeshPro.text= "You can (not) redo.";//You can (not) advanced.
+            textMeshPro.text= "You can (not) redo.";//You can (not) advanced
         }
         text.text = now.ToString();
     }

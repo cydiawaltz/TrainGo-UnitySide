@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - OpenScene2
     - ReadArrival
     - ReadNotch
+    - Syokyu
     - lifeaccessor
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -118,11 +119,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5694}
     - Class: 114
-      Script: {instanceID: 6014}
+      Script: {instanceID: 6012}
     - Class: 114
-      Script: {instanceID: 7346}
+      Script: {instanceID: 7424}
     - Class: 114
-      Script: {instanceID: 7430}
+      Script: {instanceID: 7796}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -173,11 +174,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5694}
     - Class: 114
-      Script: {instanceID: 5846}
+      Script: {instanceID: 6012}
     - Class: 114
-      Script: {instanceID: 6014}
+      Script: {instanceID: 6988}
     - Class: 114
-      Script: {instanceID: 6992}
+      Script: {instanceID: 7792}
+    - Class: 114
+      Script: {instanceID: 7800}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -837,12 +840,6 @@ ScriptsOnlyBuild:
     className: FullscreenSample
   - hash:
       serializedVersion: 2
-      Hash: 8e0adf00d9b154c98142b737869e15e1
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ReadArrival
-  - hash:
-      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -889,12 +886,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextContainer
-  - hash:
-      serializedVersion: 2
-      Hash: b74ebed1a031356e9deb3bedf3e5bbef
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Syokyu
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1060,12 +1051,6 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: lifeaccessor
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseUpMessageListener
@@ -1129,6 +1114,24 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 8e0adf00d9b154c98142b737869e15e1
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ReadArrival
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: lifeaccessor
+  - hash:
+      serializedVersion: 2
+      Hash: b74ebed1a031356e9deb3bedf3e5bbef
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Syokyu
   platform: 19
   scenePathNames:
   - Assets/Scenes/TestBrowser.unity

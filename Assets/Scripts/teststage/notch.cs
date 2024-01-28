@@ -16,11 +16,11 @@ public class ReadNotch : MonoBehaviour
         //力行ノッチ
         MemoryMappedFile arrivalfrombve = MemoryMappedFile.OpenExisting("Power");
         powernotch = arrivalfrombve.CreateViewAccessor();
-        Power = powernotch.ReadInt32(0);
+        Power = powernotch.ReadInt32(1);
         //ブレーキノッチ
         MemoryMappedFile a = MemoryMappedFile.OpenExisting("Brake");
         brakenotch = a.CreateViewAccessor();
-        Brake = brakenotch.ReadInt32(0);
+        Brake = brakenotch.ReadInt32(1);
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class ReadNotch : MonoBehaviour
     }
     void OnApplicationQuit()//アプリケーションの終了時に呼び出す
     {
-        powernotch.Dispose();
-        brakenotch.Dispose();
+        //powernotch.Dispose();
+        //brakenotch.Dispose();
     }
 }

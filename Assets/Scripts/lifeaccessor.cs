@@ -7,7 +7,7 @@ public class lifeaccessor : MonoBehaviour
 {
     //public Syokyu life;
     //int lifetime;
-    MemoryMappedViewAccessor lifetobve;
+    public MemoryMappedViewAccessor lifetobve;
     
     // Start is called before the first frame update
     void Start()
@@ -15,13 +15,14 @@ public class lifeaccessor : MonoBehaviour
         //lifetime = life.life;
         MemoryMappedFile l = MemoryMappedFile.CreateNew("life", 1000);
         lifetobve = l.CreateViewAccessor();
-        lifetobve.Write(0,30);
+        lifetobve.Write(1,30);
     }
 
     // Update is called once per frame
     void Update()
     {
         //lifetobve.Write(0,lifetime);
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
+        //↑死は救済だ
     }
 }
